@@ -1,0 +1,94 @@
+
+<p-card [header]="empregadoParaEditar ? 'Editar Empregado(a)' : 'Cadastrar Empregado(a)'">
+  <ng-template pTemplate="header" *ngIf="empregadoParaEditar">
+    <div class="flex justify-content-end mr-3">
+      <i (click)="fecharModal()" class="pi pi-times mt-2 cursor-pointer"  style="font-size: 1.3rem"></i>
+    </div>
+</ng-template>
+    <form [formGroup]="formCadastrarEditarEmpregado">
+    <div class="formgrid grid">
+      <div class="field col-12 md:col-5">
+        <label><strong>Nome</strong></label>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+          <input
+            formControlName="nome"
+            pInputText
+            type="text"
+            class="w-full p-inputtext-sm"
+          />
+        </div>
+      </div>
+      <div class="field col-12 md:col-5">
+        <label for="firstname6"><strong>Sobrenome</strong></label>
+        <input
+          formControlName="sobrenome"
+          pInputText
+          type="text"
+          class="w-full p-inputtext-sm"
+        />
+      </div>
+      <div class="field col-12 md:col-2">
+        <label for="firstname6"><strong>Idade</strong></label>
+        <input
+          formControlName="idade"
+          pInputText
+          type="number"
+          class="w-full p-inputtext-sm"
+        />
+      </div>
+      <div class="field col-12 md:col-4">
+        <label for="firstname6"><strong>Telefone</strong></label><br>
+        <p-inputMask
+          formControlName="telefone"
+          mask="(99) 9 9999-9999"
+          [style]="{width: '100%'}"
+          class="w-full p-inputtext-sm"
+        ></p-inputMask>
+      </div>
+
+      <div class="field col-12 md:col-2">
+        <label for="firstname6"><strong>Cor cabelo</strong></label>
+        <input
+          formControlName="corCabelo"
+          pInputText
+          type="text"
+          class="w-full p-inputtext-sm"
+        />
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <label><strong>Gênero</strong></label><br>
+            <p-radioButton
+              formControlName="genero"
+              *ngFor="let genero of generos"
+              [label]="genero.label"
+              [value]="genero.value"
+            ></p-radioButton>
+      </div>
+    </div>
+
+    <div class="formgrid grid">
+      <div class="field col-12 md:col-5">
+        <label
+          ><strong>Endereço</strong
+        ></label>
+        <input
+          placeholder="Número, rua, bairro, cidade, estado, país"
+          formControlName="endereco"
+          pInputText
+          type="text"
+          class="w-full p-inputtext-sm"
+        />
+      </div>
+    </div>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <div class="flex justify-content-end">
+        <button *ngIf="!empregadoParaEditar" class="mr-4" pButton routerLink="/listar-empregados">Voltar</button>
+        <button *ngIf="empregadoParaEditar" class="mr-4" pButton (click)="fecharModal()">Fechar</button>
+        <button [disabled]="!formCadastrarEditarEmpregado.valid" pButton (click)="cadastrarEmpregados()">Salvar</button>
+    </div>
+  </ng-template>
+</p-card>

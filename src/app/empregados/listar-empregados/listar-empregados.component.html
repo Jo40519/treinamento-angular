@@ -1,0 +1,46 @@
+<p-card class="mt-5" header="Lista de Empregados e Empregadas">
+  <div class="flex justify-content-end">
+    <button routerLink="cadastrar-empregado" class="h-4" pButton>
+      Cadastrar Empregado
+    </button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Idade</th>
+        <th scope="col">Contato</th>
+        <th scope="col">Salário</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Excluir</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let empregados of empregados$ | async">
+        <td>
+          {{ empregados.nome + " " + empregados.sobrenome }}
+        </td>
+
+        <td>{{ empregados.idade }}</td>
+        <td>{{ empregados.telefone }}</td>
+        <td>{{empregados.salario }}</td>
+        <td>
+          <button
+            (click)="editarEmpregados(empregados)"
+            pButton
+            class="p-button-help length-button"
+            icon="pi pi-pencil"
+          ></button>
+        </td>
+        <td>
+          <button
+          (click)="deletarEmpregado(empregados.id)"
+            pButton
+            class="p-button-danger length-button"
+            icon="pi pi-trash"
+          ></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</p-card>

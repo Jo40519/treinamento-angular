@@ -31,7 +31,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css"
             ],
             "scripts": []
           },
@@ -107,5 +111,7 @@
       }
     }
   },
-  "defaultProject": "treinamento-angular"
+  "cli": {
+    "analytics": "3504176f-07d6-4efe-b467-49a2e9e3e080"
+  }
 }
